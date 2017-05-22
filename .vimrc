@@ -74,7 +74,7 @@ endif
 " ############################ keyboard shortcuts ############################
 
 " vim esc remap
-map <ESC> <jj>
+imap jj <ESC>
 
 " vim hard mode, forget those arrow keys!!
 noremap <up> <nop>
