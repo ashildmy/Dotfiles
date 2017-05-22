@@ -1,10 +1,6 @@
 ---
 - hosts: all
   tasks:
-  - name: Ping
-    ping:
-    remote_user: user
-
   - name: Get .vimrc
     get_url:
       url: https://raw.githubusercontent.com/ashildmy/Dotfiles/master/.vimrc
