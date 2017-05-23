@@ -65,6 +65,8 @@
       name: git
       state: latest
 
+# This will install to root directory since the "become" method has escalated to user root
+# TODO: Fix where this is installed.  Look into installing for specific users.
   - name: Clone Vundle
     git:
       repo: https://github.com/VundleVim/Vundle.vim.git
