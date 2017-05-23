@@ -1,0 +1,73 @@
+---
+- hosts: all
+  tasks:
+  - name: Remove .vimrc
+    file:
+      path: ~/.vimrc
+      state: absent
+
+  - name: Remove my vim color scheme
+    file:
+      path: ~/.vim/colors/tomorrow-night-eighties.vim
+      state: absent
+
+  - name: Remove tmux.conf
+    file:
+      path: ~/.tmux.conf
+      state: absent
+
+  - name: Delete Vundle Vundle
+    file:
+      path: ~/.vim/bundle/Vundle.vim 
+      state: absent
+
+- hosts: centos
+  tasks:
+  - name: Uninstall Git
+    yum:
+      name: git
+      state: absent
+
+  - name: Uninstall Vim
+    yum:
+      name: vim
+      state: absent
+
+  - name: Uninstall Tmux
+    yum:
+      name: tmux
+      state: absent
+
+  become: yes
+  become_method: sudo
+
+- hosts: ubuntu
+  tasks:
+  - name: Uinstall Git
+    apt:
+      name: git
+      state: absent
+
+  - name: Uinstall Vim
+    apt:
+      name: vim
+      state: absent
+
+  - name: Uninstall Tmux
+    apt:
+      name: tmux
+      state: absent
+
+  become: yes
+  become_method: sudo
+#
+# - hosts: all
+#   tasks:
+  # - name: Clone Vundle
+  #   git:
+  #     repo: https://github.com/VundleVim/Vundle.vim.git
+  #     dest: ~/.vim/bundle/Vundle.vim 
+
+# Hangs when running vundle install.  Must do manually with "vim +PluginInstall +qall"
+  # - name: Install Vundle
+  #   command: vim +PluginInstall +qall

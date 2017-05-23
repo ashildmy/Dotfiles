@@ -38,14 +38,6 @@
       name: vim
       state: latest
 
-  - name: Clone Vundle
-    git:
-      repo: https://github.com/VundleVim/Vundle.vim.git
-      dest: ~/.vim/bundle/Vundle.vim 
-
-  - name: Install Vundle
-    command: vim +PluginInstall +qall
-
   - name: Install Tmux
     yum:
       name: tmux
@@ -65,20 +57,10 @@
       name: git
       state: latest
 
-# This will install to root directory since the "become" method has escalated to user root
-# TODO: Fix where this is installed.  Look into installing for specific users.
-  - name: Clone Vundle
-    git:
-      repo: https://github.com/VundleVim/Vundle.vim.git
-      dest: ~/.vim/bundle/Vundle.vim 
-
   - name: Install Vim
     apt:
       name: vim
       state: latest
-
-  - name: Install Vundle
-    command: vim +PluginInstall +qall
 
   - name: Install Tmux
     apt:
@@ -88,3 +70,13 @@
   become: yes
   become_method: sudo
 
+- hosts: all
+  tasks:
+  - name: Clone Vundle
+    git:
+      repo: https://github.com/VundleVim/Vundle.vim.git
+      dest: ~/.vim/bundle/Vundle.vim 
+    
+# Hangs when running vundle install.  Must do manually with "vim +PluginInstall +qall"
+  # - name: Install Vundle
+  #   command: vim +PluginInstall +qall
