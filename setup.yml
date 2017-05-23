@@ -22,7 +22,7 @@
 
   - name: Get tmux.conf
     get_url:
-      url: https://raw.githubusercontent.com/ashildmy/Dotfiles/master/tmux.conf
+      url: https://raw.githubusercontent.com/ashildmy/Dotfiles/master/.tmux.conf
       dest: ~/.tmux.conf
       force: yes
 
