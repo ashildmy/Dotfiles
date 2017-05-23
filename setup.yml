@@ -20,11 +20,6 @@
       dest: ~/.vim/colors/tomorrow-night-eighties.vim
       mode: 0644
 
-  - name: Clone Vundle
-    git:
-      repo: https://github.com/VundleVim/Vundle.vim.git
-      dest: ~/.vim/bundle/Vundle.vim 
-
   - name: Get tmux.conf
     get_url:
       url: https://raw.githubusercontent.com/ashildmy/Dotfiles/master/tmux.conf
@@ -43,6 +38,11 @@
       name: vim
       state: latest
 
+  - name: Clone Vundle
+    git:
+      repo: https://github.com/VundleVim/Vundle.vim.git
+      dest: ~/.vim/bundle/Vundle.vim 
+
   - name: Install Vundle
     command: vim +PluginInstall +qall
 
@@ -59,6 +59,16 @@
   - name: Update all packages
     apt:
       upgrade: dist
+
+  - name: Install Git
+    apt:
+      name: git
+      state: latest
+
+  - name: Clone Vundle
+    git:
+      repo: https://github.com/VundleVim/Vundle.vim.git
+      dest: ~/.vim/bundle/Vundle.vim 
 
   - name: Install Vim
     apt:
